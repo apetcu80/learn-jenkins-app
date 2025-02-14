@@ -20,5 +20,18 @@ pipeline {
                 '''
             }
         }
+
+         stage('Test') {
+            steps {
+                sh '''
+                    if [-f build/index.html]; then
+                        echo "fisierul html exista!!!!"
+                    else
+                        echo "fisierul html nu exista!"
+                    exit 1
+
+                '''
+            }
+        }
     }
 }
