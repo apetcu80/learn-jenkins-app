@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World from Git Jenkin file'
+                sh 'echo "Hello World from pipeline from sh"'
+                sh 'whoami'
+            }
+        }
+    }
+}
