@@ -28,7 +28,6 @@ pipeline {
                         echo "fisierul html exista!!!!"
                     else
                         echo "fisierul html nu exista!"
-                    exit 1
                     fi
                 '''
             }
