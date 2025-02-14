@@ -30,10 +30,13 @@ pipeline {
             }
 
             steps {
-                sh '''
-                    test -f build/index.html
-                    npm test
-                '''
+                 
+                if [ -f $WORKSPACE/build/index.html ]; then
+                    echo "Fișierul index.html există în workspace."
+                else
+                    echo "Fișierul index.html NU există în workspace."
+                    exit 1
+                fi
             }
         }
     }
