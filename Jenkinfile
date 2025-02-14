@@ -22,13 +22,17 @@ pipeline {
         }
 
         stage('Verifică fișierul') {
-        sh if [ -f $WORKSPACE/build/index.html ]; then
-            sh echo "Fișierul index.html există în workspace."
-        else
-            sh echo "Fișierul index.html NU există în workspace."
-            sh exit 1
-        sh fi
-        '''
+            steps {
+                    sh '''
+                     if [ -f $WORKSPACE/build/index.html ]; then
+                        echo "Fișierul index.html există în workspace."
+                    else
+                        echo "Fișierul index.html NU există în workspace."
+                        exit 1
+                    fi
+                    '''
+            }
+      
     }
 }
 }
