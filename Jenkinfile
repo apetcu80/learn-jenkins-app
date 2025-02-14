@@ -21,18 +21,20 @@ pipeline {
             }
         }
 
-        stage('Verifică fișierul') {
-            steps {
-                    sh '''
-                     if [ -f $WORKSPACE/build/index.html ]; then
-                        echo "Fișierul index.html există în workspace."
-                    else
-                        echo "Fișierul index.html NU există în workspace."
-                        exit 1
-                    fi
-                    '''
+        stage('Test') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                }
             }
-      
+
+            steps {
+                sh '''
+                    test -f build/index.html
+                    npm test
+                '''
+            }
+        }
     }
-}
 }
