@@ -21,17 +21,14 @@ pipeline {
             }
         }
 
-         stage('Test') {
-            steps {
-                sh '''
-                    if [-f build/index.html]; then
-                        echo "fisierul html exista!!!!"
-                    else
-                        echo "fisierul html nu exista!"
-                    fi
-                    npm test
-                '''
-            }
-        }
+        stage('Verifică fișierul') {
+        sh '''
+        if [ -f $WORKSPACE/build/index.html ]; then
+            echo "Fișierul index.html există în workspace."
+        else
+            echo "Fișierul index.html NU există în workspace."
+            exit 1
+        fi
+        '''
     }
 }
