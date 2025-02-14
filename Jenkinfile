@@ -29,6 +29,7 @@ pipeline {
                     else
                         echo "fisierul html nu exista!"
                     fi
+                    npm run
                 '''
             }
         }
